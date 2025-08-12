@@ -26,7 +26,7 @@
   "scripts": {
     "build": "tsc && vite build -c src/main/vite.config.ts && vite build -c src/renderer/vite.config.ts",
     "build:types": "tsc --project tsconfig.main.json --emitDeclarationOnly && tsc --project tsconfig.renderer.json --emitDeclarationOnly && corepack pnpm run copy:types",
-    "copy:types": "cp dist/main/index.d.ts dist/main.d.ts && cp dist/renderer/index.d.ts dist/renderer.d.ts",
+    "copy:types": "cp dist/main/index.d.ts dist/main.d.ts && cp dist/renderer/renderer/index.d.ts dist/renderer.d.ts && cp dist/renderer/renderer/ipcLink.d.ts dist/ipcLink.d.ts",
     "test": "vitest -c vitest.config.ts",
     "test:ci": "vitest run -c vitest.config.ts --coverage",
     "prepublishOnly": "corepack pnpm run build",
@@ -35,8 +35,8 @@
   },
   "devDependencies": {
     "@tanstack/react-query": "^5.32.1",
-    "@trpc/client": "next",
-    "@trpc/server": "next",
+    "@trpc/client": "^11.4.0",
+    "@trpc/server": "^11.4.0",
     "@types/debug": "^4.1.12",
     "@types/node": "^20.12.8",
     "@vitest/coverage-v8": "^1.6.0",

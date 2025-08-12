@@ -23,7 +23,7 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "exactOptionalPropertyTypes": false,
-    "outDir": "./dist"
+    "outDir": "./dist/temp"
   },
   "include": [
     "src/**/*.ts"
