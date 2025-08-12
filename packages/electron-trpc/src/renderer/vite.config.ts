@@ -2,7 +2,7 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 
-module.exports = defineConfig({
+export default defineConfig({
   base: './',
   build: {
     // Importantly, `main` build runs first and empties the out dir
@@ -15,4 +15,13 @@ module.exports = defineConfig({
     },
     outDir: path.resolve(__dirname, '../../dist'),
   },
+  esbuild: {
+    target: 'es2020',
+    supported: {
+      'bigint': true
+    },
+  },
+  optimizeDeps: {
+    include: ['@trpc/client', '@trpc/server']
+  }
 });

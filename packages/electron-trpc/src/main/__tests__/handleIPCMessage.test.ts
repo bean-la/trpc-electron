@@ -46,7 +46,7 @@ describe('api', () => {
       reply: vi.fn(),
       sender: {
         isDestroyed: () => false,
-        on: () => {},
+        on: () => { },
       },
     });
 
@@ -62,6 +62,7 @@ describe('api', () => {
           input: { id: 'test-id' },
           path: 'testQuery',
           type: 'query',
+          signal: undefined,
         },
       },
       router: testRouter,
@@ -85,7 +86,7 @@ describe('api', () => {
       reply: vi.fn(),
       sender: {
         isDestroyed: () => true,
-        on: () => {},
+        on: () => { },
       },
     });
 
@@ -101,6 +102,7 @@ describe('api', () => {
           input: { id: 'test-id' },
           path: 'testQuery',
           type: 'query',
+          signal: undefined,
         },
       },
       router: testRouter,
@@ -115,7 +117,7 @@ describe('api', () => {
       reply: vi.fn(),
       sender: {
         isDestroyed: () => false,
-        on: () => {},
+        on: () => { },
       },
     });
 
@@ -129,6 +131,7 @@ describe('api', () => {
           input: undefined,
           path: 'testSubscription',
           type: 'subscription',
+          signal: undefined,
         },
       },
       internalId: '1-1:1',
@@ -155,7 +158,7 @@ describe('api', () => {
       reply: vi.fn(),
       sender: {
         isDestroyed: () => false,
-        on: () => {},
+        on: () => { },
       },
     });
 
@@ -194,6 +197,7 @@ describe('api', () => {
           input: undefined,
           path: 'testSubscription',
           type: 'subscription',
+          signal: undefined,
         },
       },
       internalId: '1-1:1',

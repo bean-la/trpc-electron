@@ -2,7 +2,7 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 
-module.exports = defineConfig({
+export default defineConfig({
   test: {
     coverage: {
       all: true,

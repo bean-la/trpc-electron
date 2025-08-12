@@ -2,7 +2,7 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 
-module.exports = defineConfig({
+export default defineConfig({
   base: './',
   build: {
     lib: {
@@ -16,4 +16,13 @@ module.exports = defineConfig({
       external: ['electron'],
     },
   },
+  esbuild: {
+    target: 'es2020',
+    supported: {
+      'bigint': true
+    },
+  },
+  optimizeDeps: {
+    include: ['@trpc/client', '@trpc/server']
+  }
 });

@@ -13,8 +13,9 @@ const router = t.router({
   testMutation: t.procedure.input(z.string()).mutation(() => 'mutation success'),
   testSubscription: t.procedure.subscription(() => {
     return {
-      next: () => {},
-      complete: () => {},
+      [Symbol.asyncIterator]: async function* () {
+        yield 'test data';
+      }
     };
   }),
   testInputs: t.procedure
@@ -71,6 +72,7 @@ describe('ipcLink', () => {
           input: undefined,
           path: 'testQuery',
           type: 'query',
+          signal: undefined,
         },
       });
 
@@ -104,6 +106,7 @@ describe('ipcLink', () => {
           input: 'test input',
           path: 'testMutation',
           type: 'mutation',
+          signal: undefined,
         },
       });
 
@@ -144,6 +147,7 @@ describe('ipcLink', () => {
           input: undefined,
           path: 'testSubscription',
           type: 'subscription',
+          signal: undefined,
         },
       });
 
@@ -255,6 +259,7 @@ describe('ipcLink', () => {
         input: superjson.serialize(input),
         path: 'testInputs',
         type: 'query',
+        signal: undefined,
       },
     });
 
@@ -305,6 +310,7 @@ describe('ipcLink', () => {
         input: JSON.stringify(input),
         path: 'testInputs',
         type: 'query',
+        signal: undefined,
       },
     });
 
