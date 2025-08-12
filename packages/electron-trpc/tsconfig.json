@@ -4,7 +4,10 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "lib": ["dom", "es2017"],
+    "lib": [
+      "dom",
+      "es2017"
+    ],
     "module": "esnext",
     "moduleResolution": "bundler",
     "noEmit": true,
@@ -16,6 +19,11 @@
     "target": "esnext",
     "skipLibCheck": true
   },
-  "include": ["src/main/*.ts", "src/renderer/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/main/*.ts",
+    "src/renderer/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -2,6 +2,7 @@
   "name": "electron-trpc",
   "description": "Electron support for tRPC",
   "version": "0.6.1",
+  "type": "module",
   "exports": {
     "./main": {
       "require": "./dist/main.cjs",
