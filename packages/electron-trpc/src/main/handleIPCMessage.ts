@@ -53,9 +53,10 @@ export async function handleIPCMessage<TRouter extends AnyTRPCRouter>({
     const result = await callTRPCProcedure({
       ctx,
       path,
-      procedures: router._def.procedures,
       getRawInput: async () => input,
       type,
+      signal: undefined,
+      router,
     });
 
     if (type !== 'subscription') {

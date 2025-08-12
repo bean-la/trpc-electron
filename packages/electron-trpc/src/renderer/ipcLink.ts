@@ -30,8 +30,9 @@ type IPCRequest = {
   op: Operation;
 };
 
-const getElectronTRPC = () => {
-  const electronTRPC: RendererGlobalElectronTRPC = (globalThis as any).electronTRPC;
+const getElectronTRPC = (): RendererGlobalElectronTRPC => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const electronTRPC = (globalThis as any).electronTRPC as RendererGlobalElectronTRPC | undefined;
 
   if (!electronTRPC) {
     throw new Error(
