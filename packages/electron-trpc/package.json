@@ -26,7 +26,7 @@
   "scripts": {
     "build": "tsc && vite build -c src/main/vite.config.ts && vite build -c src/renderer/vite.config.ts",
     "build:types": "tsc --project tsconfig.main.json --emitDeclarationOnly && tsc --project tsconfig.renderer.json --emitDeclarationOnly && corepack pnpm run copy:types",
-    "copy:types": "cp dist/main/main/createIPCHandler.d.ts dist/createIPCHandler.d.ts && cp dist/main/main/exposeElectronTRPC.d.ts dist/exposeElectronTRPC.d.ts && cp dist/main/main/types.d.ts dist/types.d.ts && cp dist/main/main/handleIPCMessage.d.ts dist/handleIPCMessage.d.ts && cp dist/renderer/renderer/ipcLink.d.ts dist/ipcLink.d.ts && cp dist/renderer/renderer/utils.d.ts dist/utils.d.ts && echo 'export * from \"./createIPCHandler\";' > dist/main.d.ts && echo 'export * from \"./exposeElectronTRPC\";' >> dist/main.d.ts && echo 'export * from \"./types\";' >> dist/main.d.ts && echo 'export * from \"./handleIPCMessage\";' >> dist/main.d.ts && echo 'export * from \"./ipcLink\";' > dist/renderer.d.ts && echo 'export * from \"./utils\";' >> dist/renderer.d.ts",
+    "copy:types": "cpy dist/main/main/createIPCHandler.d.ts dist/createIPCHandler.d.ts && cpy dist/main/main/exposeElectronTRPC.d.ts dist/exposeElectronTRPC.d.ts && cpy dist/main/main/types.d.ts dist/types.d.ts && cpy dist/main/main/handleIPCMessage.d.ts dist/handleIPCMessage.d.ts && cpy dist/renderer/renderer/ipcLink.d.ts dist/ipcLink.d.ts && cpy dist/renderer/renderer/utils.d.ts dist/utils.d.ts && echo 'export * from \"./createIPCHandler\";' > dist/main.d.ts && echo 'export * from \"./exposeElectronTRPC\";' >> dist/main.d.ts && echo 'export * from \"./types\";' >> dist/main.d.ts && echo 'export * from \"./handleIPCMessage\";' >> dist/main.d.ts && echo 'export * from \"./ipcLink\";' > dist/renderer.d.ts && echo 'export * from \"./utils\";' >> dist/renderer.d.ts",
     "test": "vitest -c vitest.config.ts",
     "test:ci": "vitest run -c vitest.config.ts --coverage",
     "prepublishOnly": "corepack pnpm run build",
@@ -41,6 +41,7 @@
     "@types/node": "^20.12.8",
     "@vitest/coverage-v8": "^1.6.0",
     "builtin-modules": "^4.0.0",
+    "cpy-cli": "^5.0.0",
     "dts-bundle-generator": "9.5.1",
     "electron": "29.3.2",
     "react": "^18.3.1",
