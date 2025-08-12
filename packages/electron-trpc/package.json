@@ -6,13 +6,11 @@
   "exports": {
     "./main": {
       "import": "./dist/main.mjs",
-      "require": "./dist/main.cjs",
-      "types": "./dist/main.d.ts"
+      "require": "./dist/main.cjs"
     },
     "./renderer": {
       "import": "./dist/renderer.mjs",
-      "require": "./dist/renderer.cjs",
-      "types": "./dist/renderer.d.ts"
+      "require": "./dist/renderer.cjs"
     }
   },
   "author": "Jason Nall <jsonnull@gmail.com>",
@@ -25,11 +23,11 @@
   ],
   "scripts": {
     "build": "tsc && vite build -c src/main/vite.config.ts && vite build -c src/renderer/vite.config.ts",
-    "build:types": "tsc --project tsconfig.main.json --emitDeclarationOnly && tsc --project tsconfig.renderer.json --emitDeclarationOnly && corepack pnpm run copy:types",
-    "copy:types": "cpy dist/main/main/createIPCHandler.d.ts dist/createIPCHandler.d.ts && cpy dist/main/main/exposeElectronTRPC.d.ts dist/exposeElectronTRPC.d.ts && cpy dist/main/main/types.d.ts dist/types.d.ts && cpy dist/main/main/handleIPCMessage.d.ts dist/handleIPCMessage.d.ts && cpy dist/renderer/renderer/ipcLink.d.ts dist/ipcLink.d.ts && cpy dist/renderer/renderer/utils.d.ts dist/utils.d.ts && echo 'export * from \"./createIPCHandler\";' > dist/main.d.ts && echo 'export * from \"./exposeElectronTRPC\";' >> dist/main.d.ts && echo 'export * from \"./types\";' >> dist/main.d.ts && echo 'export * from \"./handleIPCMessage\";' >> dist/main.d.ts && echo 'export * from \"./ipcLink\";' > dist/renderer.d.ts && echo 'export * from \"./utils\";' >> dist/renderer.d.ts",
+    "build:types": "tsc --project tsconfig.main.json --emitDeclarationOnly && tsc --project tsconfig.renderer.json --emitDeclarationOnly && pnpm run copy:types",
+    "copy:types": "cpy dist/main/main/createIPCHandler.d.ts dist/createIPCHandler.d.ts && cpy dist/main/main/exposeElectronTRPC.d.ts dist/exposeElectronTRPC.d.ts && cpy dist/main/main/types.d.ts dist/types.d.ts && cpy dist/main/main/handleIPCMessage.d.ts dist/handleIPCMessage.d.ts && cpy dist/renderer/renderer/ipcLink.d.ts dist/ipcLink.d.ts && cpy dist/renderer/renderer/utils.d.ts dist/utils.d.ts && echo 'export * from \"./createIPCHandler\";' > dist/main.d.ts && echo 'export * from \"./exposeElectronTRPC\";' >> dist/main.d.ts && echo 'export * from \"./types\";' >> dist/main.d.ts && echo 'export * from \"./handleIPCMessage\";' >> dist/main.d.ts && echo 'export * from \"./ipcLink\";' > dist/main.d.ts && echo 'export * from \"./utils\";' >> dist/main.d.ts",
     "test": "vitest -c vitest.config.ts",
     "test:ci": "vitest run -c vitest.config.ts --coverage",
-    "prepublishOnly": "corepack pnpm run build",
+    "prepublishOnly": "pnpm run build",
     "changeset": "changeset",
     "release": "changeset publish"
   },
