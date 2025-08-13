@@ -103,9 +103,9 @@ export const createIPCHandler = <TRouter extends AnyTRPCRouter>({
   router,
   windows = [],
 }: {
-  createContext?: (opts: CreateContextOptions) => Promise<inferRouterContext<TRouter>>;
+  createContext?: (opts: CreateContextOptions) => MaybePromise<inferRouterContext<TRouter>>;
   router: TRouter;
-  windows?: Electron.BrowserWindow[];
+  windows?: BrowserWindow[];
 }) => {
   return new IPCHandler({ createContext, router, windows });
 };
