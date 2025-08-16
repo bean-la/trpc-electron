@@ -29,7 +29,8 @@
     "test:ci": "vitest run -c vitest.config.ts --coverage",
     "prepublishOnly": "pnpm run build",
     "changeset": "changeset",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "postinstall": "pnpm run build && pnpm run build:types && pnpm run copy:types"
   },
   "devDependencies": {
     "@tanstack/react-query": "^5.32.1",
