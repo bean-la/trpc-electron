@@ -7,9 +7,9 @@ import { ELECTRON_TRPC_CHANNEL } from '../constants';
 import { ETRPCRequest } from '../types';
 import { handleIPCMessage } from './handleIPCMessage';
 import { CreateContextOptions } from './types';
-import debugFactory from 'debug';
+import debug from 'debug';
 
-const debug = debugFactory('electron-trpc:main:IPCHandler');
+const debugLog = debug('electron-trpc:main:IPCHandler');
 
 type MaybePromise<TType> = Promise<TType> | TType;
 
@@ -50,14 +50,14 @@ class IPCHandler<TRouter extends AnyTRPCRouter> {
       return;
     }
 
-    debug('Attaching window', win.id);
+    debugLog('Attaching window', win.id);
 
     this.#windows.push(win);
     this.#attachSubscriptionCleanupHandlers(win);
   }
 
   detachWindow(win: BrowserWindow) {
-    debug('Detaching window', win.id);
+    debugLog('Detaching window', win.id);
 
     this.#windows = this.#windows.filter((w) => w !== win);
     this.#cleanUpSubscriptions({ webContentsId: win.webContents.id });
@@ -72,7 +72,7 @@ class IPCHandler<TRouter extends AnyTRPCRouter> {
   }) {
     for (const [key, sub] of this.#subscriptions.entries()) {
       if (key.startsWith(`${webContentsId}-${frameRoutingId ?? ''}`)) {
-        debug('Closing subscription', key);
+        debugLog('Closing subscription', key);
         sub.unsubscribe();
         this.#subscriptions.delete(key);
       }
@@ -81,7 +81,7 @@ class IPCHandler<TRouter extends AnyTRPCRouter> {
 
   #attachSubscriptionCleanupHandlers(win: BrowserWindow) {
     win.webContents.on('did-start-navigation', ({ frame }) => {
-      debug(
+      debugLog(
         'Handling webContents `did-start-navigation` event',
         `webContentsId: ${win.webContents.id}`,
         `frameRoutingId: ${frame.routingId}`
@@ -92,7 +92,7 @@ class IPCHandler<TRouter extends AnyTRPCRouter> {
       });
     });
     win.webContents.on('destroyed', () => {
-      debug('Handling webContents `destroyed` event');
+      debugLog('Handling webContents `destroyed` event');
       this.detachWindow(win);
     });
   }
