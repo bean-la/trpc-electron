@@ -42,8 +42,8 @@
     "cpy-cli": "^5.0.0",
     "dts-bundle-generator": "9.5.1",
     "electron": "^30",
-    "react": "^19.1",
-    "react-dom": "^19.1",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
     "superjson": "^2.2.1",
     "vite": "^6.3",
     "vite-plugin-commonjs-externals": "^0.1.4",
@@ -53,6 +53,8 @@
   "peerDependencies": {
     "@trpc/client": ">=11.0.0",
     "@trpc/server": ">=11.0.0",
-    "electron": ">19.0.0"
+    "electron": ">19.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   }
 }
