@@ -32,6 +32,9 @@
     "release": "changeset publish",
     "postinstall": "pnpm run build && pnpm run build:types && pnpm run copy:types"
   },
+  "dependencies": {
+    "debug": "^4.3.4"
+  },
   "devDependencies": {
     "@tanstack/react-query": "^5.85.0",
     "@trpc/client": "^11.5.0",
